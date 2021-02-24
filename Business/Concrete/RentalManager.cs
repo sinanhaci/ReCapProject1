@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,12 +20,13 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
-            if (rental.RentDate > rental.ReturnDate && rental.RentDate != null)
-            {
-                return new ErrorResult(Messages.RentalError);
-            }
+            //if (rental.RentDate > rental.ReturnDate && rental.RentDate != null)
+            //{
+            //    return new ErrorResult(Messages.RentalError);
+            //}
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalAdded);
             //if (rental.RentDate < rental.ReturnDate && rental.RentDate != null && rental.ReturnDate != null)
@@ -55,13 +58,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.Id == Id), Messages.RentalListedById);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
-        {
-            if (rental.ReturnDate != null)
-            {
-                return new ErrorResult(Messages.RentalError);
-            }
-
+        {  
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdate);
         }
