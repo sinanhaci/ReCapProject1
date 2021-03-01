@@ -34,24 +34,24 @@ namespace ConsoleUI
             //UserDetailList();
 
 
-            //BrandManager brandManager = new BrandManager(new EfBrandDal());
-            CarManager carManager = new CarManager(new EfCarDal());
-            //ColorManager colorManager = new ColorManager(new EfColorDal());
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            UserManager userManager = new UserManager(new EfUserDal());
+            ////BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //CarManager carManager = new CarManager(new EfCarDal());
+            ////ColorManager colorManager = new ColorManager(new EfColorDal());
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //UserManager userManager = new UserManager(new EfUserDal());
 
 
-            var result = rentalManager.GetAll();
-            if (result.Success==true)
-            {
-                foreach (var rental in result.Data)
-                {
+            //var result = rentalManager.GetAll();
+            //if (result.Success==true)
+            //{
+            //    foreach (var rental in result.Data)
+            //    {
                     
-                        Console.WriteLine("Kiralanabilir Araba Listesi =" + rental.CarId + " " + rental.CustomerId);
+            //            Console.WriteLine("Kiralanabilir Araba Listesi =" + rental.CarId + " " + rental.CustomerId);
                     
-                }
-            }
+            //    }
+            //}
             
                 //Rental rentalAdd = new Rental
                 //{
